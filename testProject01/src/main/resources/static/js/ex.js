@@ -3,3 +3,11 @@ $(document).ready(function(){
 		alert("클릭됨");
 	});
 });
+/*
+document.querySelector("#btn").addEventListener("click", btn);
+*/
+
+function btn(){
+	alert("클릭되었습니다.");
+}
+

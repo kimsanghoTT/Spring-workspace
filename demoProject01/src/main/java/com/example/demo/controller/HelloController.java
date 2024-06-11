@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HelloController {
 	/* 
 	기존 Servlet : 클래스 단위로 하나의 요청만 가능
- 	메서드 단위로 요청 처리 가능
+ 	Spring : 메서드 단위로 요청 처리 가능
 	
 	@RequestMapping("요청주소")
 		- 요청 주소를 처리할 메서드를 매핑하는 어노테이션
@@ -43,10 +43,21 @@ public class HelloController {
 					public String 메서드명(){} -> KH/쇼핑 매핑
 				} 
 	 */
-	@RequestMapping("/test")
+	@RequestMapping("test")
 	public String testMethod() {
 		System.out.println("/test 요청 받았는지 확인");
+		/*
+		@RequestMapping을 쓰면 기본적으로 retrun할 때 html 파일을 봄
+		
+		classpath : src/main/resources
+		기본경로 앞에 붙여진 /templates/ 폴더가 html을 담는 공간
+		파일명 마지막에는 항상 .html이 붙는다
+		*/
+		
+		
+		// src/main/resource/templates/test.html 로 이동하겠다는 표시
 		return "test";
+		//= return(돌아가기) "html파일명";
 	}
 	
 }
