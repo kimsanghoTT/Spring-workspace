@@ -1,9 +1,13 @@
 package com.example.demo.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -42,5 +46,35 @@ public class ParameterController {
 		
 		return "redirect:/param/main";
 		//작성 다 되면 메인으로 돌아가기
+	}
+
+	
+	@PostMapping("input2")
+	public String paramInput2(@RequestParam("snackName") String snackName,
+		@RequestParam("snackCompany") String snackCompay, 
+		@RequestParam("snackPrice") int snackPrice,
+		@RequestParam(value="snackLike", defaultValue="snackLike", required=false) String snackLike
+	) {
+		/*		
+		과자 이름 : <input type="text" name="snackName">
+		제조사 : <input type="text" name="snackCompany">
+		가격 : <input type="number" name="snackPrice">
+		선호도 : <input type="text" name="snackLike">*/
+		log.info("snackName : " + snackName);
+		log.info("snackCompay : " + snackCompay);
+		log.info("snackPrice : " + snackPrice);
+		log.info("snackLike : " + snackLike);
+		
+		return "redirect:/param/main";
+	}
+	
+	@PostMapping("favoriteSnackCompany")
+	public String paramInput3(@RequestParam(value="favoriteSnack", required=false) String[] favoriteSnack,
+			@RequestParam(value="favoriteCompany", required=false) List<String> favoriteCompany
+	) {
+		log.info(Arrays.toString(favoriteSnack));
+		log.info("favoriteCompany : " + favoriteCompany);
+		
+		return "redirect:/param/main";
 	}
 }

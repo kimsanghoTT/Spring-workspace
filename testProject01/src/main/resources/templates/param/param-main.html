@@ -6,10 +6,41 @@
 </head>
 <body>
 	<h1>파라미터 제출하기</h1>
+	<h3>1. HttpServletRequest.getParameter("key") 이용해서 제출하기</h3>
 	<form action="/param/input" method="post">
 		이름 : <input type="text" name="inputName"><br>
 		나이 : <input type="number" name="inputAge"><br>
 		주소 : <input type="text" name="inputAddress"><br>
+		<button>제출하기</button>
+	</form>
+	
+	<h3>2. @RequestParam 어노테이션 이용해서 낱개로 값 가져오기</h3>
+	<form action="/param/input2" method="post">
+		과자 이름 : <input type="text" name="snackName"><br>
+		제조사 : <input type="text" name="snackCompany"><br>
+		가격 : <input type="number" name="snackPrice"><br>
+		선호도 : <input type="text" name="snackLike"><br>
+		<button>제출하기</button>
+	</form>
+	
+	<h3>3. @RequestParam 어노테이션 이용해서 다수 값 가져오기
+		좋아하는 과자 String[]
+		선호하는 회사 List<String>
+	</h3>
+	<form action="/param/favoriteSnackCompany" method="post">
+		좋아하는 과자 :
+		스윙칩 <input type=checkbox name="favoriteSnack" value="swingchip">
+		칸쵸 <input type=checkbox name="favoriteSnack" value="kancho">
+		홈런볼 <input type=checkbox name="favoriteSnack" value="homerunBall">
+		
+		<br><br>
+		
+		선호하는 회사 : 
+		농심 <input type="checkbox" name="favoriteCompany" value="Nongsim">
+		오리온 <input type="checkbox" name="favoriteCompany" value="Orion">
+		해태 <input type="checkbox" name="favoriteCompany" value="Haetae">
+		
+		<br><br>
 		<button>제출하기</button>
 	</form>
 </body>

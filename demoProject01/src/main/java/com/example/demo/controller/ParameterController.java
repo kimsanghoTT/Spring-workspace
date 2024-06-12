@@ -101,10 +101,10 @@ public class ParameterController {
 	) {
 		
 		log.info("문제없이 insert 가능한지 확인");
-		log.debug("title : " + title);
-		log.debug("writer : " + writer);
-		log.debug("price : " + price);
-		log.debug("publisher : " + publisher);
+		log.info("title : " + title);
+		log.info("writer : " + writer);
+		log.info("price : " + price);
+		log.info("publisher : " + publisher);
 		return "redirect:/param/main";
 	}
 	/*
