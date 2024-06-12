@@ -30,15 +30,4 @@ public class memberDTO {
 	//기본생성자 -> lombok @NoArgsConstructor 자동완성 사용하기
 	//필수생성자 -> lombok @AllArgsConstructor 자동완성 사용하기
 	//toString -> lombok @ToString 자동완성 사용하기
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

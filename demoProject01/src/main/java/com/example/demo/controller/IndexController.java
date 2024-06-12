@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j//각 메서드 이동할 때마다 log.info써서 위치 이동 찍기
 public class IndexController {
 
-	@GetMapping("cafe/cafe-index")
+	@GetMapping("cafe/cafe_index")
 	public String cafeMainMethod() {
 		log.info("cafe index 메인으로 이동");
 		return "cafe/cafe_index";
@@ -28,7 +28,7 @@ public class IndexController {
 		return "blog/blog-board";
 	}
 	
-	@GetMapping("cafe/cafe-board")
+	@GetMapping("cafe/cafe_board")
 	public String cafeBoardMethod() {
 		log.info("cafe board 게시판으로 이동");
 		return "cafe/cafe_board";
