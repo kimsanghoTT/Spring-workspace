@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
@@ -38,7 +38,24 @@
     </pre>
 
     <ol>
-        <li><a href="/example">타임리프 예제</a></li>
+        <li><a href="/example/ex1">타임리프 예제 1</a></li>
+        <li>
+        	<form action="/example/ex2" method="post">
+        	<h4>타임리프 예제 2</h4>
+        	이름 : <input type="text" name="inputName"><br>
+        	나이 : <input type="number" name="inputAge"><br>
+        	색상 : 
+        	Red : <input type="checkbox" name="color" value="Red">
+        	Blue : <input type="checkbox" name="color" value="Blue">
+        	Green : <input type="checkbox" name="color" value="Green">
+        	<button>제출하기</button>
+        	<br>
+        	</form>
+        </li>
+        <li>
+        	<a href="/example/ex3">타임리프 예제3</a>
+        </li>
     </ol>
+    <th:block th:replace="~{layout/footer}"></th:block>
 </body>
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>회원 정보</title>
+</head>
+<body>
+	<h1>회원 정보 보기</h1>
+	<h2>방법1</h2>
+	<ul>
+		<li th:text="${mem}">member 객체</li>
+		<li th:text="${mem.name}">이름</li>
+		<li th:text="${mem.phone}">번호</li>
+		<li th:text="${mem.age}">나이</li>
+	</ul>
+	<hr>
+	<h2>방법2</h2>
+	<ul th:object="${mem}">
+		<li th:text="*{name}"></li>
+		<li th:text="*{phone}"></li>
+		<li th:text="*{age}"></li>
+	</ul>
+	<hr>
+	<h2>방법3</h2>
+    <table border='1'>
+    	<thead>
+    		<tr>
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>나이</th>
+            </tr>
+    	</thead>
+        <tbody>
+        <!-- Controller에서 가져온 memList를 모두 가져온 모음집 -->
+        <!-- memList에서 하나씩 꺼내 mem 변수에 하나씩 값을 담음 -->
+            <tr th:each="mem : ${memList}" th:object="${mem}">
+            <!-- object로 mem이 아래 필드명에 자동으로 포함되게끔 선언 -->
+            <!-- 따로 mem.name으로 쓰면 mem.mem.name이 돼서 에러 발생 -->
+            <!-- * : object와 연결하는 표시 -->
+                <td th:text="*{name}"></td><!-- mem.name -->
+                <td th:text="*{phone}"></td><!-- mem.phone -->
+                <td th:text="*{age}"></td><!-- mem.age -->
+            </tr>
+        </tbody>
+    </table>
+	<th:block th:replace="~{layout/footer}"></th:block>
+</body>
+</html>
