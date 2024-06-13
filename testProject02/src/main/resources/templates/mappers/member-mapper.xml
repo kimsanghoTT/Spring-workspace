@@ -13,3 +13,6 @@
  <select id="" resultType="결과전송">
  	평소 작성했던 select sql문 작성
  </select>
+ <insert id="" parameterType="넣을값가져오기">
+ 	평소 작성했던 insert sql문 작성
+ </insert>
