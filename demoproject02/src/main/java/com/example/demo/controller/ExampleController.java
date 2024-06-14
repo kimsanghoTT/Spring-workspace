@@ -125,4 +125,40 @@ public class ExampleController {
 		
 		return "example/ex3";
 	}
+	
+	@GetMapping("ex4")
+	public String ex4(Model model) {
+		// 아직 std로 전달해준 값이 없어서 std 없음이 뜸
+		StudentDTO std = new StudentDTO("7890", "피카츄", 22);
+		model.addAttribute("std",std);
+		
+		MemberDTO mem = new MemberDTO(1234, "둘리", 33);
+		model.addAttribute("mem",mem);		
+		model.addAttribute("testIf","테스트 중");
+		
+		model.addAttribute("num",200);
+		model.addAttribute("altha", "A");
+		
+		return "example/ex4";
+	}
+	
+	@GetMapping("ex5")
+	public String ex5(Model model) {
+		//message 값으로 전달할 값 작성하기
+		model.addAttribute("message", "타임리프 + JS 사용 예제");
+		
+		//std로 어떤 값을 전달해준 게 없음
+		
+		StudentDTO std = new StudentDTO();
+		std.setStudentNo("2222");		
+		std.setName("김옥자");
+		model.addAttribute("std",std);
+		
+		MemberDTO mem = new MemberDTO();
+		mem.setMemberNo(1);
+		mem.setName("김상호");
+		mem.setAge(20);
+		model.addAttribute("mem",mem);
+		return "example/ex5";
+	}
 }
