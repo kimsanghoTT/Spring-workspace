@@ -22,7 +22,7 @@
          <h4>std 값 없음</h4>
     </th:block>
     <th:block th:unless="${std == null}">
-    <!-- std == null -> 값이 있을 경우 -->
+    <!-- std != null -> 값이 있을 경우 -->
          <h4>std 값 있음</h4>
     </th:block>
     
@@ -54,7 +54,7 @@
     <!-- th:if를 쓸 때 th:text를 같이 사용하면 충돌이나서 에러가 발생 -->
     
     <h3>타임리프 조건문 [2] = th:switch / th:case</h3>
-    <!-- 변수 값ㅇ 따라 알맞은 case 실행 -->
+    <!-- 변수 값에 따라 알맞은 case 실행 -->
     <th:block th:switch="${num}">
        <h4 th:case="100">AAAAAAAA</h4>
        <h4 th:case="200">BBBBBBBB</h4>
