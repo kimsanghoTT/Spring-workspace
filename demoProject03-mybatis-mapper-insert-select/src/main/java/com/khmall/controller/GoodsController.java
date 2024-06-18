@@ -24,8 +24,6 @@ public class GoodsController {
 	public String insertProduct(Goods goods, Model model){
 		
 		productService.insertProduct(goods);
-	//	List<Goods> productList = productService.getAllProduct();
-	//	model.addAttribute("productList",productList);
 		model.addAttribute("msg", "상품이 성공적으로 등록됐습니다.");
 		
 		//등록한 결과를 볼 수 있는 html로 이동
