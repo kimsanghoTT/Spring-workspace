@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>돼지 정보 보기</title>
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+	<h1>돼지 목록</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>이미지</th>
+				<th>이름</th>
+				<th>상세보기</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- model.addAttribute("pigList", pigList); -->
+			<tr th:each="p : ${pigList}">
+				<td>
+					<img th:src="@{${p.pig_image_path}}">
+				</td>
+				<td th:text="${p.pig_name}"></td>
+				<td>
+					<a th:href="@{'/pigDetail/' + ${p.pig_id}}">이동하기</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

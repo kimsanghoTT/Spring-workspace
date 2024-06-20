@@ -23,7 +23,7 @@ public class SnacksController {
 		//스낵서비스에서 추가적인 서비스 기능으로 다듬어진 메서드 가져오기
 		List<Snacks> snackList = snackService.getAllSnacks();
 		
-		//th:each문에서 ${snackList}로 작성함
+		//th:each문에서 ${snackList}로 작성했으므로
 		//html에 전달할 목록들을 "" 안의 snackList라는 변수명으로 전달
 		//Model은 db에서 가져온 값을 전달해주는 연결고리
 		model.addAttribute("snackList",snackList);

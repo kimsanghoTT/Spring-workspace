@@ -12,7 +12,9 @@
 				<th>ID</th>
 				<th>과자명</th>
 				<th>가격</th>	
-				<th>회사코드</th>		
+				<th>회사코드</th>	
+				<th>회사명</th>
+				<th>회사 번호</th>	
 			</tr>
 		</thead>
 		<tbody>
@@ -21,6 +23,8 @@
 				<td th:text="${s.snack_name}"></td>
 				<td th:text="${s.price}"></td>
 				<td th:text="${s.company_id}"></td>
+				<td th:text="${s.company_name}"></td>
+				<td th:text="${s.company_phone}"></td>				
 			</tr>
 		</tbody>	
 	</table>

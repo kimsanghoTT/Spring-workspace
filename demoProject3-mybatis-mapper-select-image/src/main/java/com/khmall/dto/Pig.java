@@ -11,12 +11,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Snacks {
-	
-	private int snack_id;
-	private String snack_name;
-	private int price;
-	private int company_id;
-	private String company_name;
-	private String company_phone;
+public class Pig {
+	private int pig_id;
+	private String pig_name;
+	private int pig_age;
+	private String pig_image_path;
 }

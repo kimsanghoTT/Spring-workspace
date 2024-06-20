@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>khmemberList</title>
+</head>
+<body>
+	<h1>kh회원 리스트</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>회원 ID</th>
+				<th>회원 이름</th>
+				<th>회원 비밀번호</th>	
+				<th>회원 이메일</th>		
+				<th>회원 가입일</th>		
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="m: ${khmemberList}">
+				<td th:text="${m.member_id}"></td>
+				<td th:text="${m.username}"></td>
+				<td th:text="${m.password}"></td>
+				<td th:text="${m.email}"></td>
+				<td th:text="${m.created_at}"></td>
+			</tr>
+		</tbody>	
+	</table>
+	<a href="/">메인으로 돌아가기</a>
+</body>
+</html>
