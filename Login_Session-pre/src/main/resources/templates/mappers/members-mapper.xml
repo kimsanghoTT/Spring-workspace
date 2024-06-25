@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.khmall.mapper.MembersMapper">
+	<select id="getLogin" resultType="com.khmall.dto.Members" parameterType="java.util.Map">
+		select * from members
+		where username = #{username} <!-- 사용자가 입력하는 이름값이 들어올 수 있도록 설정 -->
+		and password = #{password} <!-- 사용자가 입력한 번호값이 들어올 수 있도록 설정 -->
+		<!-- 위 두 개가 모두 일치하는 사람이 있다면 로그인 -->
+	</select>
+</mapper>

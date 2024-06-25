@@ -13,7 +13,7 @@ import com.example.demo.service.GoodsService;
 //class 명을 Controller로 작성하면 Spring 내부에 있는 Controller와 충돌이 발생.
 public class GoodsController {
 
-	@GetMapping("/")//맨 앞 페이지에서 볼 화면 띄우기
+	@GetMapping("/registerForm")//맨 앞 페이지에서 볼 화면 띄우기
 	public String registerForm(Model model) {
 		//db에 값을 넣을 수 있도록 new Goods()를 이용해서 값이 들어갈 공간을 비운채 만들어주기
 		model.addAttribute("goods", new Goods());

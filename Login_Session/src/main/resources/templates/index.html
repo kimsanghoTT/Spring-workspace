@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/js/registerForm.js"></script>
+
+    <style>
+        label {
+            margin: 10px;
+            margin-right: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .col-sm-9 {
+            flex-grow: 1;
+        }
+        .form-control {
+            border: none;
+            border-bottom: 1px solid #ced4da; 
+            border-radius: 0; 
+        }
+        body{
+            background-color: white;
+        }
+        .mainform{
+            width: 100%;
+            box-shadow: 5px 5px 10px darkblue;
+        }
+        form{
+            padding: 10px;
+        }
+        .submit{
+            width: 100%;
+        }
+        input{
+            pointer-events: none;
+        }
+
+        /*내비게이션*/
+        .navform{
+            box-shadow: 5px 5px 10px black;
+            background-color: rgb(250, 251, 253)
+        }
+        .login {
+            margin-left: auto; 
+            color: darkblue;
+            font-size: small;
+            font-weight: bold;
+        }
+        .nav-link{
+            color: darkblue;
+            font-size: large;
+            font-weight: bold;
+        }
+        .welcomeMsg{
+            display:none;
+        }
+        /*푸터*/
+        footer {
+            background-color: darkblue;
+            color: white;
+            margin-top: 30px;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navform navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="home.html">
+                <img src="/image/pngegg.png" alt="logoImage" style="width: 210px;">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                  </svg>
+              </button>
+              <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown mr-5">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      방문 전 정보
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">이용안내</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">공지사항</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown mr-5">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      아쿠아리움 소개
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">전시생물 소개</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">프로그램 소개</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown mr-5">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      온라인 예매
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">예약하기</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">예약확인</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown mr-5">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      굿즈샵
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">구매하기</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">구매정보</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div th:if="${session.loginSession == null}" class="ml-auto">
+                <a href="/login" class="/login">로그인</a>
+                </div>
+                <div th:if="${session.loginSession != null}" class="ml-auto">
+                    <span th:text="${session.loginSession.member_name}+'님, 환영합니다.'"></span>
+                    <a href="/logout">로그아웃</a>
+                </div>
+                </div>  
+          </nav>
+    </header>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>마이페이지 수정하기</title>
+</head>
+<body>
+	<h1>마이페이지 수정하기</h1>
+	<form th:action="@{modifyProfile}" th:object="${member}" method="post">
+		이름 : <input type="text" th:field="*{member_name}">
+		나이 : <input type="text" th:field="*{member_age}">
+		번호 : <input type="text" th:field="*{member_phone}">
+		<button>수정하기</button>
+	</form>
+</body>
+</html>
