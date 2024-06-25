@@ -18,4 +18,10 @@
 	<delete id="deleteMember" parameterType="int">
 		delete from member where member_id = #{member_id}
 	</delete>
+	<select id="searchMembers" resultType="com.khmall.dto.Member" parameterType="String">
+		select * from member
+		 where member_name like '%'|| #{keyword}|| '%'
+		 or member_phone like '%'|| #{keyword}|| '%'
+	</select>
+	
 </mapper>

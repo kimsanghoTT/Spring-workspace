@@ -1,12 +1,16 @@
 package com.khmall.controller;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.khmall.dto.Member;
 import com.khmall.service.MemberService;
+
 import jakarta.servlet.http.HttpSession;
 @Controller
 // @RestController -> 추후, 리액트에서 사용할 예정
@@ -108,5 +112,19 @@ public class LoginController {
 		
 		session.invalidate(); //삭제 후 로그인 무효화
 		return "redirect:/";
+	}
+	
+	@GetMapping("/search")
+	public String showSearchForm(Model model) {
+		
+		return "search";
+	}
+	
+	@PostMapping("/search")
+	public String searchMembers(Model model, @RequestParam("keyword") String keyword) {
+		
+		List<Member> member = memberService.searchMembers(keyword);
+		model.addAttribute("results", member);
+		return "search";
 	}
 }

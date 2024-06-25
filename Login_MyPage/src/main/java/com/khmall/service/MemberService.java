@@ -1,5 +1,7 @@
 package com.khmall.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,4 +31,11 @@ public class MemberService {
 		
 		memberMapper.deleteMember(member_id);
 	}
+	
+	public List<Member> searchMembers(String keyword){
+		
+		return memberMapper.searchMembers(keyword);
+	}
+
+
 }
