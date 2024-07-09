@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Ajax로 중복 확인하기2</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>상품 중복 확인</h1>
+	<label for="itemName">상품명</label>
+	<input type="text" id="itemName" name="itemName">
+	<button id="nameDuplication" type="button">중복 확인</button>
+	<p id="duplicationMsg"></p>
+</body>
+<script>
+	$(document).ready(function(){
+		$('#nameDuplication').click(function(){
+			var name = $('#itemName').val();
+			
+			$.ajax({
+				url:"/checkName",
+				type:"get",
+				data:{itemName : name},
+				success: function(result){
+					if(result.checkName){
+						$('#duplicationMsg').text("이미 존재하는 상품명입니다.");
+					}
+					else{
+						$('#duplicationMsg').text("사용 가능한 상품명입니다.");
+					}
+				},
+				error: function(){
+					$('#duplicationMsg').text("오류 발생.");
+				}
+			})
+		})
+	})
+	
+</script>
+</html>

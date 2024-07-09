@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.test.mapper.GoodsItemsMapper">
+	<resultMap type="com.kh.test.dto.GoodsItems" id="goodsMap">
+		<id column="item_id" property="itemId"/>
+		<result column="item_name" property="itemName"/>
+		<result column="item_description" property="itemDesc"/>
+		<result column="COUNT(*)" property="itemCount"/>
+	</resultMap>
+	<select id="countByName" resultMap="goodsMap" resultType="java.lang.Integer" parameterType="com.kh.test.dto.GoodsItems">
+		SELECT COUNT(*) FROM goods_items WHERE item_name = ${itemName}
+	</select>
+</mapper>

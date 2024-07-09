@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Ajax로 중복 확인하기</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('checkDup').click(function(){//checkDup 버튼을 누르면 실행할 동작
+			var itemName =$('#itemName').val(); //input 태그의 id에 해당하는 변수명을 가져올 떄는 #을 붙임
+			
+			//값 가져오기가 완료 되었으면 ajax를 통해 controller와 연결, db에 일치하는 값이 있는지 확인
+			$.ajax({
+				//1. cotroller와 연결할 url 설정
+				url:"/goodtiem/check", //controller에서 Mapping에 /gooditem/check 작성한 메서드와 연결
+				type:"get", //@GetMapping에 작성된 주소를 연결
+				dataType:"json",
+				data:{name : itemName},
+				/*
+				itemName 대신 $('#itemName').val() 사용 가능
+				 -> data:{name : $('#itemName').val()}
+				
+				name 이라는 이름으로 controller에 itemName에 담긴 값을 전달
+				key : name , value : itemName
+				
+				key와 value를 모두 itemName으로 통일하려면
+				data:{itemName : itemName}
+				*/
+				
+				//중복확인을 db와 비교하고 성공했을 경우
+				success: function(data){
+					if(data.isCheck){ //controller에서 put으로 가져온 isCheck를 사용해 true / false 확인
+						alert("이미 사용중인 상품명");
+					}
+					else{
+						alert("사용할 수 있는 상품명");
+					}
+				},
+				error: function(){
+					alert("알 수 없는 오류 발생");
+				}
+				
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<h1>Ajax를 활용한 상품 중복 확인</h1>
+	<label for="itemName">상품명</label>
+	<input type="text" id="itemName" name="itemName">
+	<button id="checkDup" type="button">중복확인</button>
+	<p id="dupMsg"></p>
+	<pre>
+		Ajax를 활용해 Controller에 상품명이 이미 DB에 존재하는 지 중복확인을 실시간으로 진행할 수 있음
+		jQuery를 사용하는 것이 효율적. -> 단순화 처리해주기 때문
+	</pre>
+	<code>
+		-- goods_item Table
+		CREATE TABLE goods_item (
+		    item_id NUMBER PRIMARY KEY,
+		    item_name VARCHAR2(100) NOT NULL,
+		    item_description VARCHAR2(500)
+		);
+		
+		-- goods_item Sequence
+		CREATE SEQUENCE goods_item_seq
+	</code>
+</body>
+</html>
