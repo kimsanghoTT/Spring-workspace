@@ -8,10 +8,10 @@ import com.kh.test.mapper.GoodsMapper;
 @Service
 public class GoodsService {
 
-    @Autowired
-    private GoodsMapper goodsMapper;
-
-    public boolean getGoodsName(String item_name) {
-        return (goodsMapper.getGoodsName(item_name) == 1 ? true : false);
-    }
+	@Autowired
+	private GoodsMapper goodsMapper;
+	
+	public boolean getGoodsName(String item_name) {
+		return (goodsMapper.getGoodsName(item_name) >= 1 ? true : false);
+	}
 }

@@ -5,5 +5,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface GoodsMapper {
 
-	Integer getGoods(String item_name);
+	int getGoodsName(String item_name);
 }

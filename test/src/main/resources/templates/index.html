@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>이메일 넣기</title>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+<body>
+	<h1>이메일 넣기</h1>
+	<form th:action="@{/register}" method="post" th:object="${members}">
+		<label>이메일 : </label>
+		<input type="text" th:field="*{us_email}"/>
+		<button>제출</button>
+	</form>
+</body>
+</html>

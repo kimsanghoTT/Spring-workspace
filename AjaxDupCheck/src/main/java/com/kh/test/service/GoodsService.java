@@ -11,9 +11,7 @@ public class GoodsService {
 	@Autowired
 	private GoodsMapper goodsMapper;
 	
-	public boolean getGoods(String item_name) {
-		Integer count = goodsMapper.getGoods(item_name);
-		
-		return count != null && count > 0;
+	public boolean getGoodsName(String item_name) {
+		return (goodsMapper.getGoodsName(item_name) == 1 ? true : false);
 	}
 }

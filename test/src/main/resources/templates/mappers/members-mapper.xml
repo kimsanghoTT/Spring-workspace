@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.test.mapper.MembersMapper">
+	<insert id="insertEmail" parameterType="com.kh.test.dto.Members">
+		insert into usermember (us_id, us_email) values (usermember_seq.nextval, #{us_email})
+	</insert>
+</mapper>

@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kh.test.mapper.GoodsMapper">
-    <select id="getGoods" parameterType="String" resultType="int">
+    <select id="getGoodsName" parameterType="String" resultType="int">
         select count(*) from goods_item where item_name = #{item_name}
     </select>
 </mapper>

@@ -4,32 +4,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.kh.test.service.GoodsService;
 
-@Controller
+@RestController
 public class GoodsController {
 
 	@Autowired
 	private GoodsService goodsService;
 	
-	@GetMapping("/")
-	public String htmlStart() {
-		return "index";
-	}
-	
-	@GetMapping("/itemCheck")
-	@ResponseBody // json Type 값을 가져옴
-	public Map<String, Object> getGoods(@RequestParam String item_name){
-		Map<String, Object> result = new HashMap<>();
-		boolean isCheck = goodsService.getGoods(item_name);
+	@GetMapping("/checkName")
+	public Map<String, Object> getGoodsName(@RequestParam("item_name") String item_name){
+		Map<String, Object> res = new HashMap<>();
+		boolean isCheck = goodsService.getGoodsName(item_name);
+		System.out.println(isCheck);
 		
-		result.put("isCheck", isCheck);
-		
-		return result;
+		res.put("isCheck", isCheck);
+		return res;
 	}
 }

@@ -8,7 +8,7 @@
 <body>
 	<h1>Ajax를 활용한 상품명 중복 확인</h1>
 	<label>상품명</label>
-	<input type="text" id="itemName" name="itemName">
+	<input type="text" id="itemName" name="item_name">
 	<button id="dupBtn">중복 확인</button>
 	<p id="dupMsg"></p>
 </body>
@@ -16,19 +16,22 @@
 	$(document).ready(function(){
 		$('#dupBtn').click(function(){
 			var htmlItemName = $('#itemName').val();
+			console.log($('#itemName').val());
 			$.ajax({
-				url:"/itemCheck",
+				url:"/checkName",
 				type:"get",
 				dataType:"json",
-				data:{controllerItemName : htmlItemName},
+				data:{item_name : htmlItemName},
 				//htmlItemName : 사용자가 작성한 상품명
 				//controllerItemName : controller에 보낼 상품명
-				success: function(result){
-					if(result.isCheck){
-						$('#dupMsh').text("사용 불가");
+				success: function(res){
+					console.log(res);
+					if(res.isCheck){
+						console.log(res.isCheck);
+						$('#dupMsg').text("사용 불가");
 					}
 					else{
-						$('#dupMsh').text("사용 가능");
+						$('#dupMsg').text("사용 가능");
 					}
 				},
 				error: function(){
